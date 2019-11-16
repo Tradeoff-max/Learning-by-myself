@@ -1,0 +1,16 @@
+import requests
+from bs4 import BeautifulSoup#在进行库的引用时，文件名不能与库函数的命名相同。
+url = 'http://www.cntour.cn/'
+strhtml=requests.get(url)
+soup=BeautifulSoup(strhtml.text,'html.parser')#更换解析器，并没有解决lmxl不能用的问题。
+data = soup.select('#main>div>div.mtop.firstMod.clearfix>div.centerBox>ul.newsList>li>a')
+print(data)
+import re
+for item in data:
+    result={
+        'title':item.get_text(),
+        'link':item.get('href'),
+        'ID':re.findall(r'\d+',item.get('herf')) #数据不匹配 尚未解决 需要正则表达式的知识，（注释本行可以实现基本的bs4爬虫功能）
+    }
+print(result)
+print(type(object))
