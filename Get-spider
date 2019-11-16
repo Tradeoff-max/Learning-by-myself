@@ -1,0 +1,5 @@
+#这是一个基础爬虫的代码，主要包括基本的库使用方法和访问地址，储存信息的方法。
+import requests
+url="http://blog.csdn.net"#csdn没有反爬虫机制，也可以换成其他的网站，如www.bilibili.com
+strhtml = requests.get(url)
+print(strhtml.text)
