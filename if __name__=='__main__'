@@ -1,0 +1,33 @@
+关于https://www.cnblogs.com/chenhuabin/p/10118199.html 即Python中“if __name__=='__main__':”理解与总结的一些解释
+第三部分 模块导入
+# 模块A
+a = 100
+print('你好，我是模块A……')
+print(a)
+          # 模块B
+          from package01 import A
+          b = 200
+          print('你好，我是模块B……')
+          print(b）
+上面的两段代码中主要是’form  A import  B ‘的解释 当使用’form   A import  B ‘时，即代表将从B中引用A模块
+即将A插入程序上方 先执行A 再执行接下来的代码。
+
+下面将执行的B模块仍保持不变，继续执行B模块。
+A 模块修改成下面所示。
+# 模块A
+a = 100
+print('你好，我是模块A……')
+if __name__=='__main__':
+print(a)
+
+执行B模块。
+输出结果：
+你好，我是模块A……
+
+你好，我是模块B……
+
+200
+总结：A模块中的a的值就没有再被输出了。所以，当你要导入某个模块，但又不想改模块的部分代码被直接执行，
+那就可以这一部分代码放在“if __name__=='__main__':”内部。
+
+“if __name__=='__main__':”的原理。
